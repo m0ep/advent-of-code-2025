@@ -50,7 +50,7 @@ class Day01:
 
         return zero_count
 
-    def parse_turns(self) -> list[Any]:
+    def parse_turns(self) -> list[Turn]:
         turns = list()
         for line in self.input_lines:
             match = re.match("[RL][0-9]+", line)
