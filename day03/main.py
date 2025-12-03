@@ -4,15 +4,34 @@ import re
 class Task:
     def __init__(self, input_file):
         with open(input_file) as f:
-            self.input_lines = [lint for lint in f.read().splitlines()]
-            print(self.input_lines)
+            self.banks = [[int(x) for x in lint] for lint in f.read().splitlines()]
 
     def solve_part1(self):
-        return 0
+        return self.calc_max_jolts(2)
+
+    def calc_max_jolts(self, numBatteries: int) -> int:
+        totalJolts = 0
+        for bank in self.banks:
+            result = list()
+            leftIdx = 0
+            while numBatteries > len(result):
+                foundIdx = leftIdx
+                for idx in range(leftIdx, len(bank) - (numBatteries - len(result) - 1)):
+                    if bank[idx] > bank[foundIdx]:
+                        foundIdx = idx
+
+                result.append(bank[foundIdx])
+                leftIdx = foundIdx + 1
+
+            bankJolts = 0
+            for idx in range(len(result)):
+                bankJolts *= 10
+                bankJolts += result[idx]
+            totalJolts += bankJolts
+        return totalJolts
 
     def solve_part2(self):
-        return 0
-
+        return self.calc_max_jolts(12)
 
 def run(path):
     uut = Task(path + '/example.txt')
