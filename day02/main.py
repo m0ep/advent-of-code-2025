@@ -1,7 +1,7 @@
 import re
 
 
-class Day02:
+class Task:
     def __init__(self, input_file):
         with open(input_file) as f:
             self.productIdRanges = list()
@@ -54,19 +54,19 @@ class Day02:
 
 
 def run(path):
-    uut = Day02(path + '/example.txt')
+    uut = Task(path + '/example.txt')
     result = uut.solve_part1()
     print("Part 1 (example) result: " + str(result))
 
-    uut = Day02(path + '/input.txt')
+    uut = Task(path + '/input.txt')
     result = uut.solve_part1()
     print("Part 1 (input) result: " + str(result))
 
-    uut = Day02(path + '/example.txt')
+    uut = Task(path + '/example.txt')
     result = uut.solve_part2()
     print("Part 2 (example) result: " + str(result))
 
-    uut = Day02(path + '/input.txt')
+    uut = Task(path + '/input.txt')
     result = uut.solve_part2()
     print("Part 2 (input) result: " + str(result))
 

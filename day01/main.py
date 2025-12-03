@@ -33,7 +33,7 @@ class Turn:
     def __str__(self):
         return "Turn(" + self.direction + ", " + str(self.distance) + ")"
 
-class Day01:
+class Task:
     def __init__(self, input_file):
         with open(input_file) as f:
             self.input_lines = [line.rstrip() for line in f]
@@ -69,19 +69,19 @@ class Day01:
         return zero_count
 
 def run(path):
-    uut = Day01(path + '/example.txt')
+    uut = Task(path + '/example.txt')
     result = uut.solve_part1()
     print("Part 1 (example) result: " + str(result))
 
-    uut = Day01(path + '/input.txt')
+    uut = Task(path + '/input.txt')
     result = uut.solve_part1()
     print("Part 1 (input) result: " + str(result))
 
-    uut = Day01(path + '/example.txt')
+    uut = Task(path + '/example.txt')
     result = uut.solve_part2()
     print("Part 2 (example) result: " + str(result))
 
-    uut = Day01(path + '/input.txt')
+    uut = Task(path + '/input.txt')
     result = uut.solve_part2()
     print("Part 2 (input) result: " + str(result))
 
