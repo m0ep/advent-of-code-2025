@@ -20,16 +20,13 @@ class IdRange:
                 or other.contains(self.endInclusive)
                 or self.contains(other.startInclusive))
 
+
 class Task:
     def __init__(self, input_file):
         with open(input_file) as f:
             ranges_raw, ingredients_raw = f.read().split("\n\n")
 
-        self.idRanges : list[IdRange] = list()
-        for line in ranges_raw.splitlines():
-            start, end = line.split("-")
-            self.idRanges.append(IdRange(int(start), int(end)))
-
+        self.idRanges = [IdRange(*map(int, line.split("-"))) for line in ranges_raw.splitlines()]
         self.ingredient = [int(item) for item in ingredients_raw.splitlines()]
 
     def solve_part1(self):
@@ -63,9 +60,10 @@ class Task:
 
         result = 0
         for r in merged:
-            result += (r.endInclusive - r.startInclusive)+1
+            result += (r.endInclusive - r.startInclusive) + 1
 
         return result
+
 
 def run(path):
     uut = Task(path + '/example.txt')
