@@ -77,6 +77,15 @@ class Map2d(Generic[T]):
     def contains(self, pos: Vec2i) -> bool:
         return 0 <= pos.x < self.width and 0 <= pos.y < self.height
 
+    def find_first(self, target: T) -> Vec2i | None:
+        for y in range(self.height):
+            for x in range(self.width):
+                pos = Vec2i(x, y)
+                if target == self[pos]:
+                    return pos
+
+        return None
+
     def __str__(self) -> str:
         result = ''
         for row in self.data:
