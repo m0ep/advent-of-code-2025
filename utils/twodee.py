@@ -6,6 +6,9 @@ class Vec2i:
         self.x = x
         self.y = y
 
+    def distance_to_sqrt(self, other) -> int:
+        return (self.x - other.x) ** 2 + (self.y - other.y) ** 2
+
     def __str__(self) -> str:
         return f"Vec2i(x:{self.x}, y:{self.y})"
 
